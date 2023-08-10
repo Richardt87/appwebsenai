@@ -1,9 +1,6 @@
 package com.example.appwebsenai;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
 import java.util.ArrayList;
@@ -17,7 +14,7 @@ public class PersonController {
 
 
     @GetMapping("/person")
-    public Person addPerson(@PathParam("name")String name){
+    public Person findPerson(@PathParam("id") int id, @PathParam("name")String name){
         for(Person p : persons){
             if (p.getName().equals(name)){
                 return p;
@@ -26,6 +23,19 @@ public class PersonController {
 
         return null;
 
+    }
+
+
+    @DeleteMapping("/person")
+    public String deletePerson(@PathParam("name")String name){
+        Person person = new Person();
+        for (Person p : persons){
+            if (p.getName().equals(name)){
+                person = p;
+            }
+        }
+        persons.remove(person);
+        return "Pessoa com o nome de " + name + " foi deletado";
     }
 
     @PostMapping ("/person")
@@ -38,6 +48,19 @@ public class PersonController {
         persons.add(person);
         return person;
 
+    }
+
+    @PutMapping("/person")
+    public Person updatePerson(@PathParam("id") int id, @PathParam("name") String name){
+        Person p = new Person();
+        for (Person person : persons){
+            if (person.getId() == id){
+               person.setName(name);
+               p = person;
+            }
+        }
+
+        return  p;
     }
 
     @GetMapping("/home")
