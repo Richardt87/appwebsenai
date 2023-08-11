@@ -29,7 +29,7 @@ public class PersonView {
 
     @PostMapping ("/person")
     public Person addPerson(@PathParam("name") String name, @PathParam("sexo") String sexo){
-        return controller.addPerson(name, sexo);
+       return controller.addPerson(name, sexo);
 
     }
 
