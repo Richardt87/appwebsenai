@@ -4,7 +4,7 @@ public interface ContaCorrente {
 
 
 
-    void sacar(Double quantidade);
+    Double sacar(Double quantidade);
 
     void depositar(Double quantidade);
 
