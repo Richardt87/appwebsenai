@@ -1,4 +1,6 @@
 package com.example.appwebsenai.model;
 
-public class ContaCorrentePJ {
+public class ContaCorrentePJ extends Conta{
+
+
 }
