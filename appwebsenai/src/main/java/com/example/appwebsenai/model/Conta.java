@@ -1,5 +1,8 @@
 package com.example.appwebsenai.model;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+@EntityScan
 public abstract class Conta {
 
     private Long numeroConta;
