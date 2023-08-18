@@ -2,9 +2,14 @@ package com.example.appwebsenai.model;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-@EntityScan
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@EntityScan @Table(name =  "conta")
 public abstract class Conta {
 
+    @Id @Column(name = "numero_conta")
     private Long numeroConta;
 
     private Person pessoa;
