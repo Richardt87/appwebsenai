@@ -13,7 +13,7 @@ public abstract class Conta {
     @Id @Column(name = "numero_conta")
     private Long numeroConta;
 
-   private Person pessoa;
+  // private Person pessoa;
 
     private Double saldo;
 
@@ -25,13 +25,13 @@ public abstract class Conta {
         this.numeroConta = numeroConta;
     }
 
-    public Person getPessoa() {
+    /*public Person getPessoa() {
         return pessoa;
     }
 
     public void setPessoa(Person pessoa) {
         this.pessoa = pessoa;
-    }
+    }*/
 
     public Double getSaldo() {
         return saldo;
