@@ -11,6 +11,8 @@ public class BancoController implements ContaCorrente {
 
     @Autowired
     private BancoRepository bancoRepository;
+    @Autowired
+    private Controller controller;
     private Long number = 0L;
     @Override
     public Double sacar(Double quantidade, Conta conta) {
