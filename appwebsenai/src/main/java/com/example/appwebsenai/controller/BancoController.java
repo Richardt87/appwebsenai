@@ -2,6 +2,7 @@ package com.example.appwebsenai.controller;
 
 import com.example.appwebsenai.model.Conta;
 import com.example.appwebsenai.model.ContaCorrentePF;
+import com.example.appwebsenai.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,9 @@ public class BancoController implements ContaCorrente {
         ContaCorrentePF contaCorrentePF = new ContaCorrentePF();
         number++;
         contaCorrentePF.setNumeroConta(number);
+        Person p = new Person();
+        p.setName("Antonio");
+        p.setId(7);
         bancoRepository.save(contaCorrentePF);
         return contaCorrentePF;
     }
