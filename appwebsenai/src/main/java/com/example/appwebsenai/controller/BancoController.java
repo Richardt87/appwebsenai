@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -77,15 +78,27 @@ public class BancoController implements ContaCorrente {
     }
 
     @Override
-    public void transferir(Double quantidade, Conta conta) {
+    public String transferir(Long contaOrigem, Long contaDestino, Double valor) {
+        String message = "";
+        ContaCorrentePF destino = bancoRepository.findById(contaDestino).get();
+        ContaCorrentePF origem = bancoRepository.findById(contaOrigem).get();
+
+        if (origem.getSaldo() >= valor){
+            destino.setSaldo(destino.getSaldo() + valor);
+            origem.setSaldo(origem.getSaldo() - valor);
+            bancoRepository.save(destino);
+            bancoRepository.save(origem);
+            message = "A conta do(a) " + destino.getPerson().getName() + " recebeu a transferencia no valor de R$: " + valor;
+        }else{
+            message = message + " Saldo insuficiente para a operação";
+        }
+        return message;
 
     }
-
     @Override
     public Double consultaSaldo() {
         return null;
     }
-
     @Override
     public Double consultaSaldo(Conta conta) {
         return conta.getSaldo();
