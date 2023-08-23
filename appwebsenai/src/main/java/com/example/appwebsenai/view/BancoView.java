@@ -2,6 +2,7 @@ package com.example.appwebsenai.view;
 
 
 import com.example.appwebsenai.controller.BancoController;
+import com.example.appwebsenai.model.AccountType;
 import com.example.appwebsenai.model.Conta;
 import com.example.appwebsenai.model.ContaCorrentePF;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +17,17 @@ public class BancoView {
 
     @Autowired
     private BancoController bancoController;
-    @GetMapping("/consultaSaldo")
-    public Double consultaSaldo(){
-        Conta conta = new ContaCorrentePF();
-        conta.setSaldo(100D);
-        return bancoController.consultaSaldo(conta);
 
-    }
 
     @PostMapping("/criaconta")
-    public Conta criarConta(@PathParam("name") String name) throws Exception  {
-       return bancoController.criarConta(name);
+    public ContaCorrentePF criarConta(@PathParam("name") String name, @PathParam("type") String accountType) throws Exception  {
+       return bancoController.criarConta(name, accountType);
+    }
+
+    @GetMapping("/type")
+    public String listAccountType(){
+        String text = AccountType.CONTA_CORRENTE + ", " + AccountType.CONTA_POUPANCA;
+        return text;
     }
 
     @GetMapping("/consultaconta")
