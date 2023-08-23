@@ -6,6 +6,8 @@ import com.example.appwebsenai.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class BancoController implements ContaCorrente {
@@ -21,15 +23,32 @@ public class BancoController implements ContaCorrente {
         return null;
     }
 
-    public  Conta criarConta(String name){
+    public  ContaCorrentePF criarConta(String name) throws Exception{
         ContaCorrentePF contaCorrentePF = new ContaCorrentePF();
         number++;
         contaCorrentePF.setNumeroConta(number);
-        Person p = new Person();
-        p.setName("Antonio");
-        p.setId(7);
-        bancoRepository.save(contaCorrentePF);
+        Person person = controller.findPerson(name);
+        if (person != null){
+            contaCorrentePF.setPerson(person);
+            bancoRepository.save(contaCorrentePF);
+        }else{
+            throw new Exception("Pessoa não esta cadastrada.");
+
+        }
+
+
         return contaCorrentePF;
+    }
+
+    public ContaCorrentePF consultaConta(String name){
+
+        List<ContaCorrentePF> contas = (List<ContaCorrentePF>) bancoRepository.findAll();
+
+        for (ContaCorrentePF cc : contas){
+            if (cc.getPerson().getName().equals("name")){
+
+            }
+        }
     }
 
     @Override

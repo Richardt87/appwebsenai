@@ -25,8 +25,13 @@ public class BancoView {
     }
 
     @PostMapping("/criaconta")
-    public Conta criarConta(@PathParam("name") String name){
+    public Conta criarConta(@PathParam("name") String name) throws Exception  {
        return bancoController.criarConta(name);
+    }
+
+    @GetMapping("/consultaconta")
+    public ContaCorrentePF consultaConta(@PathParam("name") String name){
+        return
     }
 
 }
