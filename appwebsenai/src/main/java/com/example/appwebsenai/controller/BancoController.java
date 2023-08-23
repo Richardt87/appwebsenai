@@ -45,10 +45,11 @@ public class BancoController implements ContaCorrente {
         List<ContaCorrentePF> contas = (List<ContaCorrentePF>) bancoRepository.findAll();
 
         for (ContaCorrentePF cc : contas){
-            if (cc.getPerson().getName().equals("name")){
-
+            if (cc.getPerson() != null && cc.getPerson().getName().equals("name")){
+                return cc;
             }
         }
+        return null;
     }
 
     @Override

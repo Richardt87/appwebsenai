@@ -31,7 +31,7 @@ public class BancoView {
 
     @GetMapping("/consultaconta")
     public ContaCorrentePF consultaConta(@PathParam("name") String name){
-        return
+        return bancoController.consultaConta(name);
     }
 
 }
