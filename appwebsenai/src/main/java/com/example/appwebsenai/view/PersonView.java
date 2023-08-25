@@ -22,8 +22,8 @@ public class PersonView {
 
     @DeleteMapping("/person")
     public String deletePerson(@PathParam("name")String name){
-        Person person = new Person();
-
+        controller.removePerson(name);
+        
         return "Pessoa com o nome de " + name + " foi deletado";
     }
 
@@ -39,6 +39,9 @@ public class PersonView {
 
         return  p;
     }
+
+//    @GetMapping("/all")
+//    public list<Person> listAll()
 
     @GetMapping("/home")
     public String helloWorld(){

@@ -1,14 +1,17 @@
 package com.example.appwebsenai.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "pessoa")
 public class Person {
 
     @Id
     Integer id;
-
+@Column(name = "nome")
     private String name;
 
     private String sexo;

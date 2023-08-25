@@ -10,8 +10,8 @@ import java.util.List;
 @Service
 public class Controller {
 
-   // @Autowired
-   // public PersonRepository personRepository;
+    @Autowired
+    public PersonRepository personRepository;
 
     private List<Person> persons = new ArrayList<>();
     private int id = 0;
@@ -31,7 +31,7 @@ public class Controller {
         person.setSexo(sexo);
         id++;
         person.setId(id);
-        persons.add(person);
+        personRepository.save(person);
         return person;
     }
 
