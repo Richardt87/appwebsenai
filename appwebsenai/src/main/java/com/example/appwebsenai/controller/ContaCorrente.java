@@ -1,6 +1,8 @@
 package com.example.appwebsenai.controller;
 
 import com.example.appwebsenai.model.Conta;
+import com.example.appwebsenai.model.ContaCorrentePF;
+import javax.websocket.server.PathParam;
 
 public interface ContaCorrente {
 
@@ -12,7 +14,7 @@ public interface ContaCorrente {
 
     String transferir(Long contaOrigem, Long contaDestino, Double valor);
 
-    Double consultaSaldo();
+    Double consultaSaldo(ContaCorrentePF conta);
 
 
     Double consultaSaldo(Conta conta);

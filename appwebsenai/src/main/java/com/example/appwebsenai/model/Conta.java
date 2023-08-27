@@ -11,6 +11,7 @@ import javax.persistence.Table;
 public abstract class Conta {
 
     @Id @Column(name = "numero_conta")
+
     private Long numeroConta;
 
   // private Person pessoa;
@@ -18,10 +19,12 @@ public abstract class Conta {
     private Double saldo;
 
     public Long getNumeroConta() {
+
         return numeroConta;
     }
 
     public void setNumeroConta(Long numeroConta) {
+
         this.numeroConta = numeroConta;
     }
 
@@ -34,10 +37,12 @@ public abstract class Conta {
     }*/
 
     public Double getSaldo() {
+
         return saldo;
     }
 
     public void setSaldo(Double saldo) {
+
         this.saldo = saldo;
     }
 }

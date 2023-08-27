@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Date;
 import java.util.Optional;
 
 
@@ -23,6 +24,9 @@ public class BancoController implements ContaCorrente {
     @Override
     public Double sacar(Double quantidade, Conta conta) {
         return null;
+    }
+    public void delete(String name){
+        bancoRepository.delete(this.consultaConta(name));
     }
 
     public  ContaCorrentePF criarConta(String name, String accounttype) throws Exception{
@@ -96,11 +100,13 @@ public class BancoController implements ContaCorrente {
 
     }
     @Override
-    public Double consultaSaldo() {
-        return null;
+    public Double consultaSaldo(ContaCorrentePF conta) {
+        return conta.getSaldo;
     }
+
     @Override
     public Double consultaSaldo(Conta conta) {
-        return conta.getSaldo();
+        return null;
     }
+
 }

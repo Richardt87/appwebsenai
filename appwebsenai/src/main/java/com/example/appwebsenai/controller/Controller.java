@@ -11,15 +11,15 @@ import java.util.List;
 public class Controller {
 
     @Autowired
-    public PersonRepository personRepository;
-
+    private PersonRepository personRepository;
     private List<Person> persons = new ArrayList<>();
     private int id = 0;
 
     public Person findPerson(String name) {
-        for (Person p : persons) {
-            if (p.getName().equals(name)) {
-                return p;
+        List<Person> persons = (List<Person>) personRepository.findAll();
+        for (Person person : persons) {
+            if (person.getName().equals(name)) {
+                return person;
             }
         }
         return null;
@@ -36,15 +36,22 @@ public class Controller {
     }
 
     public void removePerson(String name){
+        Person person = findPerson(name);
+        personRepository.delete(person);
 
-        //Implementar metodo remover
     }
 
     public Person editPerson(String name, String sexo){
-        //Implementar metodo editar
+        Person person = findPerson(name);
+        person.setSexo(sexo);
+        personRepository.save(person);
+        return person;
 
-        return null;
     }
 
 
+    public List<Person> listAll(){
+
+        return (List<Person>)personRepository.findAll();
+    }
 }
